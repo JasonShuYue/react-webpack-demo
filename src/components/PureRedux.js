@@ -1,5 +1,5 @@
 import React, { Component }from 'react';
-import {createStore} from 'redux';
+import { createStore, bindActionCreators, combineReducers } from 'redux';
 
 
 function run() {
@@ -17,7 +17,8 @@ function run() {
 		}
 	}
 
-	const store = createStore(reducer);
+	const todos = (state = {}) => state;
+	const store = createStore(combineReducers({reducer, todos}));
 
 	store.subscribe(() => { console.log(store.getState() )});
 
@@ -33,7 +34,10 @@ function run() {
 		}
 	};
 
-	store.dispatch(add())
+	add = bindActionCreators(add, store.dispatch);
+
+	// store.dispatch(add())
+	add();
 	store.dispatch(minuse())
 
 }
