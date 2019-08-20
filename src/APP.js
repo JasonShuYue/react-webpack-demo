@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { useState } from 'react';
 
-import PureRedux from './components/PureRedux';
+import Counter from './components/Counter';
 
 function App() {
 	// 声明一个叫 "count" 的 state 变量
-	const [count, setCount] = useState(0);
 
 	return (
 		<div>
-			<PureRedux />
+			<Counter />
 		</div>
 	);
 }
